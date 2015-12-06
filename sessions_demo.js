@@ -36,7 +36,7 @@ app.get('/reset-table',function(req,res,next){
     })
   });
 });
-
+/*
 app.post('/',function(req,res){
   var context = {};
 
@@ -69,7 +69,7 @@ app.post('/',function(req,res){
   console.log(context.toDo);
   res.render('toDoList',context);
 });
-
+*/
 
 // error handling
 app.use(function(req,res){
