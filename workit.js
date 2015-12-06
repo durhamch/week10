@@ -23,7 +23,7 @@ app.set('port', 3000);
 
 app.get('/',function(req,res,next){
   var context = {};
-  pool.query('SELECT * FROM todo', function(err, rows, fields){
+  pool.query('SELECT * FROM workit', function(err, rows, fields){
     if(err){
       next(err);
       return;
