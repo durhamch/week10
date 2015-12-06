@@ -10,7 +10,7 @@ var pool = mysql.createPool({
   host  : 'localhost',
   user  : 'student',
   password: 'default',
-  database: 'student'
+  database: 'workit'
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,18 +22,19 @@ app.set('view engine', 'handlebars');
 app.set('port', 3000);
 
 
-app.get('/',function(req,res,next){
+app.get('/reset-table',function(req,res,next){
   var context = {};
-  //If there is no session, go to the main page.
-  if(!req.session.name){
-    res.render('newUser', context);
-    return;
-  }
-  context.name = req.session.name;
-  context.toDoCount = req.session.toDo.length || 0;
-  context.toDo = req.session.toDo || [];
-  console.log(context.toDo);
-  res.render('toDoList',context);
+  mysql.pool.query("DROP TABLE IF EXISTS todo", function(err){
+    var createString = "CREATE TABLE todo(" +
+    "id INT PRIMARY KEY AUTO_INCREMENT," +
+    "name VARCHAR(255) NOT NULL," +
+    "done BOOLEAN," +
+    "due DATE)";
+    mysql.pool.query(createString, function(err){
+      context.results = "Table reset";
+      res.render('home',context);
+    })
+  });
 });
 
 app.post('/',function(req,res){
