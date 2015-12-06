@@ -10,7 +10,7 @@ var pool = mysql.createPool({
   host  : 'localhost',
   user  : 'student',
   password: 'default',
-  database: 'workit'
+  database: 'student'
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
