@@ -47,28 +47,10 @@ app.get('/',function(req,res,next){
 
 app.post('/',function(req, rest){
   if(req.body['Add Item']){
-    console.log({"name":req.body.name});
-    //req.session.toDo.push({"name":req.body.name, "id":req.session.curId});
-    //req.session.curId++;
+    console.log({"name":req.body.name,"reps":req.body.reps,"weight":req.body.weight,"date":req.body.date,"unit":req.body.unit});
   }
-  var workout = req.body.workout;
-  console.log("Workout is: " + workout);
 });
 
-app.get('/reset-table',function(req,res,next){
-  var context = {};
-  pool.query("DROP TABLE IF EXISTS todo", function(err){
-    var createString = "CREATE TABLE todo(" +
-    "id INT PRIMARY KEY AUTO_INCREMENT," +
-    "name VARCHAR(255) NOT NULL," +
-    "done BOOLEAN," +
-    "due DATE)";
-    pool.query(createString, function(err){
-      context.results = "Table reset";
-      res.render('home',context);
-    })
-  });
-});
 
 // error handling
 app.use(function(req,res){
