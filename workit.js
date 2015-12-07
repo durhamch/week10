@@ -50,7 +50,7 @@ app.post('/',function(req, res){
   console.log("Made it this far.");
   if(req.body['Add Item']){
     var context = {};
-    pool.query("INSERT INTO workit (`name`),(`reps`),(`weight`),(`date`),(`lbs`) VALUES (?),(?),(?),(?),(?)", [req.body.name], [req.body.reps], [req.body.weight], [req.body.date], [req.body.units], function(err, result){
+    pool.query("INSERT INTO workit (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?,?,?,?,?)", [req.body.name], [req.body.reps], [req.body.weight], [req.body.date], [req.body.units], function(err, result){
       /*if(err){
         next(err);
         return;
