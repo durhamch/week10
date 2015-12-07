@@ -33,7 +33,7 @@ app.get('/',function(req,res,next){
   });
 });
 
-
+//insert new values into table
 app.get('/insert',function(req,res,next){
   var context = {};
   pool.query("INSERT INTO workit (name, reps, weight, date, lbs) VALUES (?, ?, ?, ?, ?)", [req.query.name, req.query.reps, req.query.weight, req.query.date, req.query.lbs], function(err, rows, fields){
@@ -43,7 +43,7 @@ app.get('/insert',function(req,res,next){
     }
     //context.results = "Inserted id " + result.insertId;
     context.results = rows;
-    res.render('home',context);
+    res.redirect('/',context);
   });
 });
 
