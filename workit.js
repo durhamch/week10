@@ -49,10 +49,10 @@ app.post('/',function(req, res){
   if(req.body['Add Item']){
     var context = {};
     pool.query("INSERT INTO workit (`name`),(`reps`),(`weight`),(`date`),(`lbs`) VALUES (?,?,?,?,?)", [req.body.name], [req.body.reps], [req.body.weight], [req.body.date], [req.body.units], function(err, result){
-      if(err){
+      /*if(err){
         next(err);
         return;
-      }
+      }*/
     //context.results = "Inserted id " + result.insertId;
     //res.render('home',context);
     });
