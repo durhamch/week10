@@ -45,7 +45,7 @@ app.get('/',function(req,res,next){
 });
 
 
-app.post('/',function(req, rest){
+app.post('/',function(req, res){
   if(req.body['Add Item']){
     console.log({"name":req.body.name,"reps":req.body.reps,"weight":req.body.weight,"date":req.body.date,"unit":req.body.unit});
   }
