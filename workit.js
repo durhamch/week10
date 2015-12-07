@@ -36,7 +36,7 @@ app.get('/',function(req,res,next){
 
 app.get('/insert',function(req,res,next){
   var context = {};
-  pool.query("INSERT INTO workit (name, reps, weight, date, lbs) VALUES (?, ?, ?, ?, ?)", [req.query.name, req.query.reps, req.query.weight, req.query.date, req.query.lbs], function(err, result){
+  pool.query("INSERT INTO workit (name, reps, weight, date, lbs) VALUES (?, ?, ?, ?, ?)", [req.query.name, req.query.reps, req.query.weight, req.query.date, req.query.lbs], function(err, rows, fields){
     if(err){
       next(err);
       return;
