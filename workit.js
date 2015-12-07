@@ -43,7 +43,7 @@ app.get('/insert',function(req,res,next){
     }
     //context.results = "Inserted id " + result.insertId;
     //context.results = rows;
-    res.send('home');
+    res.render('home');
   });
 });
 
