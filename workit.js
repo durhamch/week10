@@ -42,8 +42,8 @@ app.get('/insert',function(req,res,next){
       return;
     }
     //context.results = "Inserted id " + result.insertId;
-    context.results = rows;
-    res.redirect('/',context);
+    //context.results = rows;
+    res.send('home');
   });
 });
 
