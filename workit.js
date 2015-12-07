@@ -3,7 +3,9 @@ var express = require('express');
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var bodyParser = require('body-parser');
-var session = require('express-session');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 var mysql = require('mysql');
 var pool = mysql.createPool({
@@ -12,10 +14,6 @@ var pool = mysql.createPool({
   password: 'default',
   database: 'student'
 });
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(session({secret:'someTempPassword'}));
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -48,6 +46,11 @@ app.get('/',function(req,res,next){
 
 
 app.post('/',function(req, rest){
+  if(req.body['Add Item']){
+    console.log({"name":req.body.name});
+    //req.session.toDo.push({"name":req.body.name, "id":req.session.curId});
+    //req.session.curId++;
+  }
   var workout = req.body.workout;
   console.log("Workout is: " + workout);
 });
