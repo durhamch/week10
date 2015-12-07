@@ -46,24 +46,18 @@ app.get('/',function(req,res,next){
 });
 */
 
-app.post('/',function(req, res){
-  console.log("Made it this far.");
-  if(req.body['Add Item']){
-    var context = {};
-    pool.query("INSERT INTO workit (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?,?,?,?,?)", [req.body.name], [req.body.reps], [req.body.weight], [req.body.date], [req.body.units], function(err, result){
-      /*if(err){
-        next(err);
-        return;
-      }*/
-    //context.results = "Inserted id " + result.insertId;
-    //res.render('home',context);
-    });
-
-    console.log({"name":req.body.name,"reps":req.body.reps,"weight":req.body.weight,"date":req.body.date,"unit":req.body.unit});
-  }
-  res.render('home');
+app.get('/insert',function(req,res,next){
+  var context = {};
+  mysql.pool.query("INSERT INTO workit (name, reps, weight, date, lbs) VALUES (?, ?, ?, ?, ?)", [req.query.name, req.query.reps, req.query.weight, req.query.date, req.query.lbs], function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = "Inserted id " + result.insertId;
+    //res.send(JSON.stringify(rows));
+    res.render('home',context);
+  });
 });
-
 
 // error handling
 app.use(function(req,res){
