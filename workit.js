@@ -49,7 +49,7 @@ app.post('/',function(req, rest){
   if(req.body['Add Item']){
     console.log({"name":req.body.name,"reps":req.body.reps,"weight":req.body.weight,"date":req.body.date,"unit":req.body.unit});
   }
-  res.render('home',context);
+  res.render('home');
 });
 
 
