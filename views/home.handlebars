@@ -5,45 +5,49 @@
 	input{
 		display:block;
 	}
+	#output{
+		float:left;
+	}
 </style>
 
 <h1>Enter your gains here.</h1>
 <h3>Your workout entries:</h3>
-
-<form method="post">
-  <label>Name<input type="text" name="name" id="name"></label>
-  <label>Rep Count<input type="text" name="reps" id="reps"></label>
-  <label>Weight<input type="text" name="weight" id="weight"></label>
-  <label>Date<input type="text" name="date" id="date"></label>
-  <label>Unit<input type="text" name="unit" id="lbs"></label>
-  <label>Name<input id="addEx" type="submit" name="Add Item" value="Add Exercise">
-</form>
+<div id="form">
+	<form method="post">
+	  <label>Name<input type="text" name="name" id="name"></label>
+	  <label>Rep Count<input type="text" name="reps" id="reps"></label>
+	  <label>Weight<input type="text" name="weight" id="weight"></label>
+	  <label>Date<input type="text" name="date" id="date"></label>
+	  <label>Unit<input type="text" name="unit" id="lbs"></label>
+	  <label>Name<input id="addEx" type="submit" name="Add Item" value="Add Exercise">
+	</form>
+</div>
 <br>
 <!-- <p>{{results}}</p> -->
-
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Reps</th>
-            <th>Weight</th>
-            <th>Date</th>
-            <th>Lbs/Kgs</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each results}}
-        <tr>
-            <td>{{this.name}}</td>
-            <td>{{this.reps}}</td>
-            <td>{{this.weight}}</td>
-            <td>{{this.date}}</td>
-            <td>{{this.lbs}}</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-
+<div id="output">
+	<table>
+	    <thead>
+	        <tr>
+	            <th>Name</th>
+	            <th>Reps</th>
+	            <th>Weight</th>
+	            <th>Date</th>
+	            <th>Lbs/Kgs</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        {{#each results}}
+	        <tr>
+	            <td>{{this.name}}</td>
+	            <td>{{this.reps}}</td>
+	            <td>{{this.weight}}</td>
+	            <td>{{this.date}}</td>
+	            <td>{{this.lbs}}</td>
+	        </tr>
+	        {{/each}}
+	    </tbody>
+	</table>
+</div>
 <script>
 	function insert(){
         var req = new XMLHttpRequest();
