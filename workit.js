@@ -54,13 +54,13 @@ app.post('/',function(req, res, next){
         next(err);
         return;
       }
-    context.results = "Inserted id " + result.insertId;
+    //context.results = "Inserted id " + result.insertId;
     res.render('home',context);
-  });
-
+    });
+  }
 
     //console.log({"name":req.body.name,"reps":req.body.reps,"weight":req.body.weight,"date":req.body.date,"unit":req.body.unit});
-  }
+  
   //res.render('home');
 });
 
