@@ -1,3 +1,18 @@
+
+<h1>Enter your gains here.</h1>
+<h3>Your workout entries:</h3>
+
+<form method="post">
+  <label>Name<input type="text" name="name" id="name"></label>
+  <label>Rep Count<input type="text" name="reps" id="reps"></label>
+  <label>Weight<input type="text" name="weight" id="weight"></label>
+  <label>Date<input type="text" name="date" id="date"></label>
+  <label>Unit<input type="text" name="unit" id="lbs"></label>
+  <label>Name<input id="addEx" type="submit" name="Add Item" value="Add Exercise">
+</form>
+
+<p>{{results}}</p>
+
 <script>
 	function insert(){
         var req = new XMLHttpRequest();
@@ -19,16 +34,3 @@
 
 	document.getElementById("addEx").addEventListener("click", insert);
 </script>
-<h1>Enter your gains here.</h1>
-<h3>Your workout entries:</h3>
-
-<form method="post">
-  <label>Name<input type="text" name="name" id="name"></label>
-  <label>Rep Count<input type="text" name="reps" id="reps"></label>
-  <label>Weight<input type="text" name="weight" id="weight"></label>
-  <label>Date<input type="text" name="date" id="date"></label>
-  <label>Unit<input type="text" name="unit" id="unit"></label>
-  <label>Name<input id="addEx" type="submit" name="Add Item" value="Add Exercise">
-</form>
-
-<p>{{results}}</p>
