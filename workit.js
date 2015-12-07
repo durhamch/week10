@@ -32,6 +32,7 @@ app.get('/',function(req,res,next){
   });
 });
 
+/*
 app.get('/',function(req,res,next){
   var context = {};
   mysql.pool.query("INSERT INTO todo (`name`) VALUES (?)", [req.query.c], function(err, result){
@@ -43,12 +44,12 @@ app.get('/',function(req,res,next){
     res.render('home',context);
   });
 });
-
+*/
 
 app.post('/',function(req, res, next){
   if(req.body['Add Item']){
     var context = {};
-    mysql.pool.query("INSERT INTO workit (`name`),(`reps`),(`weight`),(`date`),(`lbs`) VALUES (?,?,?,?,?)", [req.body.name], [req.body.reps], [req.body.weight], [req.body.date], [req.body.units], function(err, result){
+    pool.query("INSERT INTO workit (`name`),(`reps`),(`weight`),(`date`),(`lbs`) VALUES (?,?,?,?,?)", [req.body.name], [req.body.reps], [req.body.weight], [req.body.date], [req.body.units], function(err, result){
       if(err){
         next(err);
         return;
@@ -58,9 +59,9 @@ app.post('/',function(req, res, next){
   });
 
 
-    console.log({"name":req.body.name,"reps":req.body.reps,"weight":req.body.weight,"date":req.body.date,"unit":req.body.unit});
+    //console.log({"name":req.body.name,"reps":req.body.reps,"weight":req.body.weight,"date":req.body.date,"unit":req.body.unit});
   }
-  res.render('home');
+  //res.render('home');
 });
 
 
