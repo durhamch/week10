@@ -1,3 +1,11 @@
+<style>
+	label{
+		display:inline-block;
+	}
+	input{
+		display:block;
+	}
+</style>
 
 <h1>Enter your gains here.</h1>
 <h3>Your workout entries:</h3>
@@ -10,7 +18,7 @@
   <label>Unit<input type="text" name="unit" id="lbs"></label>
   <label>Name<input id="addEx" type="submit" name="Add Item" value="Add Exercise">
 </form>
-
+<br>
 <!-- <p>{{results}}</p> -->
 
 <table>
@@ -25,7 +33,6 @@
     </thead>
     <tbody>
         {{#each results}}
-        this should print two times.
         <tr>
             <td>{{this.name}}</td>
             <td>{{this.reps}}</td>
