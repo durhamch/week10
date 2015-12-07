@@ -19,6 +19,7 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 3000);
 
+
 app.get('/',function(req,res,next){
   var context = {};
   pool.query('SELECT * FROM workit', function(err, rows, fields){
@@ -26,25 +27,12 @@ app.get('/',function(req,res,next){
       next(err);
       return;
     }
-    context.results = JSON.stringify(rows);
+    context.results = rows;
 
     res.render('home', context);
   });
 });
 
-/*
-app.get('/',function(req,res,next){
-  var context = {};
-  mysql.pool.query("INSERT INTO todo (`name`) VALUES (?)", [req.query.c], function(err, result){
-    if(err){
-      next(err);
-      return;
-    }
-    context.results = "Inserted id " + result.insertId;
-    res.render('home',context);
-  });
-});
-*/
 
 app.get('/insert',function(req,res,next){
   var context = {};
@@ -53,8 +41,8 @@ app.get('/insert',function(req,res,next){
       next(err);
       return;
     }
-    context.results = "Inserted id " + result.insertId;
-    //res.send(JSON.stringify(rows));
+    //context.results = "Inserted id " + result.insertId;
+    context.results = rows;
     res.render('home',context);
   });
 });
